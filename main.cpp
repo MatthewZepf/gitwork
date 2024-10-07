@@ -1,9 +1,11 @@
 #include <iostream>
 #include <random>
+#include <vector>
 using namespace std;
 
-int fibonacciTree(int n, int depth = 0) {
-    // Base case
+vector<int> memo(100, -1);
+
+int fibonacci(int n) {
     if (n <= 2) {
         for (int i = 0; i < depth; ++i) {
             cout << "  ";
@@ -11,17 +13,13 @@ int fibonacciTree(int n, int depth = 0) {
         cout << "fibonacci(" << n << ") " << n << endl;
         return n;
     }
-
-    // Recursive calls with increased depth
-    int fib1 = fibonacciTree(n - 1, depth + 1);
-    int fib2 = fibonacciTree(n - 2, depth + 1);
-
-    for (int i = 0; i < depth; ++i) {
-        cout << "  ";
+    if (memo[n] != -1) {
+        return memo[n];
     }
-    cout << "fibonacci(" << n << ") " << fib1 + fib2 << endl;
-
-    return fib1 + fib2;
+    else {
+        memo[n] = fibonacci(n - 1) + fibonacci(n - 2);
+        return memo[n];
+    }
 }
 
 void montyHall() {
@@ -32,6 +30,7 @@ void montyHall() {
     cin >> choice;
     int car = rand() % 3 + 1;
     // Reveal a door with a goat
+    // Hi there! I'm adding a comment here to create a merge conflict.
     int reveal;
     do {
         reveal = rand() % 3 + 1;
@@ -72,5 +71,6 @@ int main() {
     } else {
         cout << "Invalid choice!" << endl;
     }
+    // adding a comment for more merge conflicts :)
     return 0;
 }
