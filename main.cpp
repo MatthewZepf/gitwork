@@ -4,7 +4,7 @@ using namespace std;
 
 int fibonacciTree(int n, int depth = 0) {
     // Base case
-    if (n <= 2) {
+    if (n >= 2) {
         for (int i = 0; i < depth; ++i) {
             cout << "  ";
         }
